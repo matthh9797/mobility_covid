@@ -1,10 +1,24 @@
 # Modelling Correlation of Mobility
 # with rates of Coronavirus
+
+# libraries
 library(tidyverse)
 library(dplyr)
 library(reshape2)
 library(lubridate)
 library(covid19.analytics)
+
+# initial data download
+# google mobility data (422.4 MB, Sys.Date = "2021-03-09")
+if (!dir.exists("data")) {
+    # create data directory 
+    dir.create("data")
+}
+# url of the csv download 
+url <- "https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv"
+# download file into data directory
+download.file(url, destfile = "data/google_global_mobility_report.csv")
+
 
 # load the data ...
 # covid data from John Hopkins 
